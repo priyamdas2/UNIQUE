@@ -309,7 +309,7 @@ The simulation study evaluates UNIQUE under sparse quantile-varying linear model
 
 Data are generated using a latent-uniform model:
 
-$$Y_i=\beta_0(U_i)+\sum_{j=1}^{p_0}X_{ij}\beta_j(U_i),\qquadU_i \sim \mathrm{Unif}(0,1).$$
+$$Y_i=\beta_0(U_i)+\sum_{j=1}^{p_0}X_{ij}\beta_j(U_i),\quad U_i \sim \mathrm{Unif}(0,1).$$
 
 This induces the conditional quantile function
 
