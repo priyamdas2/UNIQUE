@@ -291,9 +291,7 @@ $$T_r=\frac{c_{\log}}{\log(2+r)}.$$
 
 Let
 
-$$\mathcal{X}=\big{\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x}) \ge 0 \big}$$
-
-$$\mathcal{X}=\left(\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x})\ge 0 \right)$$
+$$\mathcal{X}=\left[\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x})\ge 0 \right]$$
 
 be the feasible set, and let
 
