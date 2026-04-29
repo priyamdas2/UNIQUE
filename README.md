@@ -358,9 +358,8 @@ The table below maps manuscript outputs to scripts used to generate them.
 
 Detailed reproduction steps are provided in:
 
-```text
-UNIQUE_Reproducibility_Instructions.pdf
-```
+> UNIQUE_Reproducibility_Instructions.pdf
+
 ---
 ## 🔐 Data Access
 
