@@ -127,21 +127,11 @@ for all covariate values $x$.
 
 Because the fitted quantile functions are affine in $x$, global noncrossing over the scaled predictor domain can be written as a finite system of linear inequalities:
 
-$$
-A\Gamma \ge 0
-$$
+$$A\Gamma \ge 0$$
 
 where
 
-$$
-\Gamma
-=
-(
-\theta_0^{\top},
-\theta^{\top},
-s^{\top}
-)^{\top}
-$$
+$$\Gamma=(\theta_0^{\top},\theta^{\top},s^{\top})^{\top}$$
 
 contains intercept weights, aggregation weights, and slack variables.
 
@@ -161,36 +151,11 @@ This differs from broad univariate-guided sign alignment, where all conditional 
 
 UNIQUE uses adaptive weights $\omega_{jk}$ to reflect predictor strength and quantile-specific signal:
 
-$$
-signal_{jk}
-=
-q_j
-\cdot
-\frac{
-|
-\hat\beta_{j,k}^{mult}
-|
-}{
-median_{j,k}
-|
-\hat\beta_{j,k}^{mult}
-|
-}
-$$
+$$signal_{jk}=q_j\cdot\frac{|\hat\beta_{j,k}^{mult}|}{median_{j,k}|\hat\beta_{j,k}^{mult}|}$$
 
 and
 
-$$
-\omega_{jk}
-=
-\frac{
-1
-}{
-signal_{jk}
-+
-\varepsilon_w
-}
-$$
+$$\omega_{jk}=\frac{1}{signal_{jk}+\varepsilon_w}$$
 
 Here:
 
@@ -300,19 +265,11 @@ At each iteration, SAPS performs either a local move or a global move.
 
 A coordinate direction is selected adaptively:
 
-$$
-\mathcal{D}=\{\pm e_1,\ldots,\pm e_N\}.
-$$
+$$\mathcal{D}=\{\pm e_1,\ldots,\pm e_N\}.$$
 
 A candidate is proposed as
 
-$$
-\boldsymbol{x}^{\star}
-=
-\boldsymbol{x}^{(t-1)}
-+
-\delta_t a_{j_t}^{(t-1)} e_{i_t}.
-$$
+$$\boldsymbol{x}^{\star}=\boldsymbol{x}^{(t-1)}+\delta_t a_{j_t}^{(t-1)} e_{i_t}.$$
 
 The move is accepted if it preserves feasibility and improves the objective.
 
@@ -320,25 +277,11 @@ The move is accepted if it preserves feasibility and improves the objective.
 
 With fixed positive probability, SAPS performs hit-and-run exploration in the lifted feasible polyhedron. A simulated annealing rule accepts worse proposals with probability
 
-$$
-\exp
-\left(
--
-\frac{
-f(\boldsymbol{x}^{\dagger})-f(\boldsymbol{x}^{(t-1)})
-}{
-T_r
-}
-\right),
-$$
+$$\exp\left(-\frac{f(\boldsymbol{x}^{\dagger})-f(\boldsymbol{x}^{(t-1)})}{T_r}\right),$$
 
 with logarithmic cooling
 
-$$
-T_r
-=
-\frac{c_{\log}}{\log(2+r)}.
-$$
+$$T_r=\frac{c_{\log}}{\log(2+r)}.$$
 
 ---
 
@@ -346,23 +289,11 @@ $$
 
 Let
 
-$$
-\mathcal{X}
-=
-\left\{
-\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]
-:
-A\boldsymbol{\Gamma}(\boldsymbol{x})\ge0
-\right\}
-$$
+$$\mathcal{X}=\left\{\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x})\ge0\right\}$$
 
 be the feasible set, and let
 
-$$
-\mathcal{X}^{\star}
-=
-\arg\min_{\boldsymbol{x}\in\mathcal{X}} f(\boldsymbol{x})
-$$
+$$\mathcal{X}^{\star}=\arg\min_{\boldsymbol{x}\in\mathcal{X}} f(\boldsymbol{x})$$
 
 be the set of global minimizers.
 
@@ -376,27 +307,11 @@ The simulation study evaluates UNIQUE under sparse quantile-varying linear model
 
 Data are generated using a latent-uniform model:
 
-$$
-Y_i
-=
-\beta_0(U_i)
-+
-\sum_{j=1}^{p_0}
-X_{ij}\beta_j(U_i),
-\qquad
-U_i \sim \mathrm{Unif}(0,1).
-$$
+$$Y_i=\beta_0(U_i)+\sum_{j=1}^{p_0}X_{ij}\beta_j(U_i),\qquadU_i \sim \mathrm{Unif}(0,1).$$
 
 This induces the conditional quantile function
 
-$$
-Q_Y(\tau\mid X_i)
-=
-\beta_0(\tau)
-+
-\sum_{j=1}^{p_0}
-X_{ij}\beta_j(\tau).
-$$
+$$Q_Y(\tau\mid X_i)=\beta_0(\tau)+\sum_{j=1}^{p_0}X_{ij}\beta_j(\tau).$$
 
 The simulations compare:
 
