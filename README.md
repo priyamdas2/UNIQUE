@@ -77,11 +77,10 @@ UNIQUE uses univariate quantile regressions as interpretable building blocks and
 For each predictor $j$ and quantile level $\tau_k$, we first fit a marginal quantile regression:
 
 $$
-(\hat{\beta}_{0j,k}, \hat{\beta}_{j,k})
-=
-\arg\min_{b_0,b}
+(\hat\beta_{0j,k}, \hat\beta_{j,k})
+= \arg\min_{b_0,b}
 \sum_{i=1}^{n}
-\rho_{\tau_k}\left(y_i - b_0 - b x_{ij}\right)
+\rho_{\tau_k}(y_i - b_0 - b x_{ij})
 $$
 
 where
@@ -89,33 +88,33 @@ where
 $$
 \rho_{\tau}(u)
 =
-u\left(\tau - \mathbf{1}(u < 0)\right)
+u(\tau - \mathbf{1}(u < 0))
 $$
 
 The marginal fitted learner is
 
 $$
-\hat{\eta}_{ij,k}
+\hat\eta_{ij,k}
 =
-\hat{\beta}_{0j,k}
+\hat\beta_{0j,k}
 +
-\hat{\beta}_{j,k} x_{ij}
+\hat\beta_{j,k} x_{ij}
 $$
 
 UNIQUE then learns sparse nonnegative aggregation weights $\theta_{jk}$ so that the final quantile estimator is
 
 $$
-\widehat{Q}(\tau_k \mid x)
+\widehat Q(\tau_k \mid x)
 =
-\hat{\theta}_{0k}
+\hat\theta_{0k}
 +
 \sum_{j=1}^{p}
-\hat{\theta}_{jk}
-\left(
-\hat{\beta}_{0j,k}
+\hat\theta_{jk}
+(
+\hat\beta_{0j,k}
 +
-\hat{\beta}_{j,k} x_j
-\right)
+\hat\beta_{j,k} x_j
+)
 $$
 
 The nonnegative aggregation weights preserve the sign of marginal quantile effects for selected predictors, while the model can shrink weak predictors exactly to zero.
@@ -127,18 +126,16 @@ The nonnegative aggregation weights preserve the sign of marginal quantile effec
 UNIQUE estimates stacking weights by minimizing the quantile loss plus a structured sparsity penalty:
 
 $$
-\min_{\boldsymbol{\theta}_0,\boldsymbol{\theta}}
-\;
+\min_{\theta_0,\theta}
 \frac{1}{n}
 \sum_{k=1}^{K}
 \sum_{i=1}^{n}
 \rho_{\tau_k}
-\left(
+\Big[
 y_i
 -
-\tilde{q}_{ik}
-(\boldsymbol{\theta}_0,\boldsymbol{\theta})
-\right)
+\tilde q_{ik}(\theta_0,\theta)
+\Big]
 +
 \lambda_n
 \sum_{j=1}^{p}
@@ -151,13 +148,12 @@ $$
 where
 
 $$
-\tilde{q}_{ik}
-(\boldsymbol{\theta}_0,\boldsymbol{\theta})
+\tilde q_{ik}(\theta_0,\theta)
 =
 \theta_{0k}
 +
 \sum_{j=1}^{p}
-\hat{\eta}_{ij,k}^{\mathrm{CF}}
+\hat\eta_{ij,k}^{CF}
 \theta_{jk}
 $$
 
@@ -180,13 +176,13 @@ encourages predictor-level sparsity while allowing quantile-specific heterogenei
 The estimated quantile functions are required to satisfy
 
 $$
-\widehat{Q}(\tau_1 \mid x)
+\widehat Q(\tau_1 \mid x)
 \le
-\widehat{Q}(\tau_2 \mid x)
+\widehat Q(\tau_2 \mid x)
 \le
 \cdots
 \le
-\widehat{Q}(\tau_K \mid x)
+\widehat Q(\tau_K \mid x)
 $$
 
 for all covariate values $x$.
@@ -194,21 +190,19 @@ for all covariate values $x$.
 Because the fitted quantile functions are affine in $x$, global noncrossing over the scaled predictor domain can be written as a finite system of linear inequalities:
 
 $$
-A \boldsymbol{\Gamma}
-\ge
-0
+A\Gamma \ge 0
 $$
 
 where
 
 $$
-\boldsymbol{\Gamma}
+\Gamma
 =
-\left(
-\boldsymbol{\theta}_0^{\top},
-\boldsymbol{\theta}^{\top},
-\boldsymbol{s}^{\top}
-\right)^{\top}
+(
+\theta_0^{\top},
+\theta^{\top},
+s^{\top}
+)^{\top}
 $$
 
 contains intercept weights, aggregation weights, and slack variables.
@@ -230,19 +224,19 @@ This differs from broad univariate-guided sign alignment, where all conditional 
 UNIQUE uses adaptive weights $\omega_{jk}$ to reflect predictor strength and quantile-specific signal:
 
 $$
-\mathrm{signal}_{jk}
+signal_{jk}
 =
 q_j
 \cdot
 \frac{
-\left|
-\hat{\beta}_{j,k}^{\mathrm{mult}}
-\right|
+|
+\hat\beta_{j,k}^{mult}
+|
 }{
-\mathrm{median}_{j,k}
-\left|
-\hat{\beta}_{j,k}^{\mathrm{mult}}
-\right|
+median_{j,k}
+|
+\hat\beta_{j,k}^{mult}
+|
 }
 $$
 
@@ -254,7 +248,7 @@ $$
 \frac{
 1
 }{
-\mathrm{signal}_{jk}
+signal_{jk}
 +
 \varepsilon_w
 }
@@ -263,10 +257,10 @@ $$
 Here:
 
 - $q_j$ measures the univariate quantile fit quality of predictor $j$  
-- $\hat{\beta}_{j,k}^{\mathrm{mult}}$ is a multivariable quantile regression estimate  
+- $\hat\beta_{j,k}^{mult}$ is a multivariable quantile regression estimate  
 - $\varepsilon_w$ is a small stabilization constant  
 
-Large weights induce stronger shrinkage; small weights protect stronger signals.
+Large weights induce stronger shrinkage, while small weights protect stronger signals.
 
 ---
 ## 🔍 Scientific Motivation: Cognitive Heterogeneity in Parkinson’s Disease
