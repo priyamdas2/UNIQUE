@@ -291,7 +291,7 @@ $$T_r=\frac{c_{\log}}{\log(2+r)}.$$
 
 Let
 
-$$\mathcal{X}=\left\{\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x}) \ge 0\right\}$$
+$$\mathcal{X}=\{\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x}) \ge 0 \}$$
 
 $$\mathcal{X}=\left\{\boldsymbol{x}\in[\boldsymbol{\ell},\boldsymbol{u}]:A\boldsymbol{\Gamma}(\boldsymbol{x})\ge0\right\}$$
 
