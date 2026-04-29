@@ -89,29 +89,11 @@ $$\rho_{\tau}(u)=u(\tau - \mathbf{1}(u < 0))$$
 
 The marginal fitted learner is
 
-$$
-\hat\eta_{ij,k}
-=
-\hat\beta_{0j,k}
-+
-\hat\beta_{j,k} x_{ij}
-$$
+$$\hat\eta_{ij,k}=\hat\beta_{0j,k}+\hat\beta_{j,k} x_{ij}$$
 
 UNIQUE then learns sparse nonnegative aggregation weights $\theta_{jk}$ so that the final quantile estimator is
 
-$$
-\widehat Q(\tau_k \mid x)
-=
-\hat\theta_{0k}
-+
-\sum_{j=1}^{p}
-\hat\theta_{jk}
-(
-\hat\beta_{0j,k}
-+
-\hat\beta_{j,k} x_j
-)
-$$
+$$\widehat Q(\tau_k \mid x)=\hat\theta_{0k}+\sum_{j=1}^{p}\hat\theta_{jk}(\hat\beta_{0j,k}+\hat\beta_{j,k} x_j)$$
 
 The nonnegative aggregation weights preserve the sign of marginal quantile effects for selected predictors, while the model can shrink weak predictors exactly to zero.
 
