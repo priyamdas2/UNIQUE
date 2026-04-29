@@ -103,47 +103,15 @@ The nonnegative aggregation weights preserve the sign of marginal quantile effec
 
 UNIQUE estimates stacking weights by minimizing the quantile loss plus a structured sparsity penalty:
 
-$$
-\min_{\theta_0,\theta}
-\frac{1}{n}
-\sum_{k=1}^{K}
-\sum_{i=1}^{n}
-\rho_{\tau_k}
-\Big[
-y_i
--
-\tilde q_{ik}(\theta_0,\theta)
-\Big]
-+
-\lambda_n
-\sum_{j=1}^{p}
-\left(
-\sum_{k=1}^{K}
-\omega_{jk}\theta_{jk}
-\right)^{1/2}
-$$
+$$\min_{\theta_0,\theta}\frac{1}{n}\sum_{k=1}^{K}\sum_{i=1}^{n}\rho_{\tau_k}\Big[y_i-\tilde q_{ik}(\theta_0,\theta)\Big]+\lambda_n\sum_{j=1}^{p}\left(\sum_{k=1}^{K}\omega_{jk}\theta_{jk}\right)^{1/2}$$
 
 where
 
-$$
-\tilde q_{ik}(\theta_0,\theta)
-=
-\theta_{0k}
-+
-\sum_{j=1}^{p}
-\hat\eta_{ij,k}^{CF}
-\theta_{jk}
-$$
+$$\tilde q_{ik}(\theta_0,\theta)=\theta_{0k}+\sum_{j=1}^{p}\hat\eta_{ij,k}^{CF}\theta_{jk}$$
 
 The penalty
 
-$$
-\sum_{j=1}^{p}
-\left(
-\sum_{k=1}^{K}
-\omega_{jk}\theta_{jk}
-\right)^{1/2}
-$$
+$$\sum_{j=1}^{p}\left(\sum_{k=1}^{K}\omega_{jk}\theta_{jk}\right)^{1/2}$$
 
 encourages predictor-level sparsity while allowing quantile-specific heterogeneity.
 
@@ -153,15 +121,7 @@ encourages predictor-level sparsity while allowing quantile-specific heterogenei
 
 The estimated quantile functions are required to satisfy
 
-$$
-\widehat Q(\tau_1 \mid x)
-\le
-\widehat Q(\tau_2 \mid x)
-\le
-\cdots
-\le
-\widehat Q(\tau_K \mid x)
-$$
+$$\widehat Q(\tau_1 \mid x)\le\widehat Q(\tau_2 \mid x)\le\cdots\le\widehat Q(\tau_K \mid x)$$
 
 for all covariate values $x$.
 
