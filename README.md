@@ -36,7 +36,7 @@ UNIQUE uses univariate quantile regressions as interpretable building blocks and
 For each predictor $j$ and quantile level $\tau_k$, we first fit a marginal quantile regression:
 
 $$
-(\hat\beta_{0j,k},\hat\beta_{j,k})
+(\hat{\beta}_{0j,k},\hat{\beta}_{j,k})
 =
 \arg\min_{b_0,b}
 \sum_{i=1}^n
