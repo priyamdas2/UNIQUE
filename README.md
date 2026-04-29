@@ -28,6 +28,46 @@ Standard mean regression targets average effects, while separately fitted quanti
 - flexible estimation for weaker or context-dependent variables  
 
 ---
+## 📁 Repository Structure
+
+| Folder | Description |
+|--------|-------------|
+| `Motivating study/` | Scripts for introductory sign-comparison table |
+| `Simulation study/` | Scripts for simulation data generation, fitting, and summaries |
+| `Case study/` | PPMI case study analysis, bootstrap, out-of-sample comparison, and plots |
+| `DEMO/` | Minimal demonstration of UNIQUE on an example dataset |
+| `images/` | Figures displayed in this README and manuscript |
+| `UNIQUE_Reproducibility_Instructions.pdf` | Full reproducibility instructions |
+
+---
+
+## 🧮 Figures and Tables in the Paper
+
+The table below maps manuscript outputs to scripts used to generate them.
+
+| Output | Description | Script Path |
+|--------|-------------|-------------|
+| **Figure 1** | MoCA distribution, PD stage, and symptom-domain prevalence across MoCA deciles | `Case study/Plot_UNIQUE_motivation.R` |
+| **Figure 2** | Ordinal non-motor symptom severity profiles across MoCA deciles | `Case study/Plot_UNIQUE_motivation.R` |
+| **Figure 3** | Quantile-specific coefficient profiles for selected neurocognitive predictors | `Case study/Plot_case_study_1.R` |
+| **Figure 4** | Estimated conditional quantile curves on original predictor scales | `Case study/Plot_case_study_2.R` |
+| **Figure 5** | Original-scale effects, standardized effect magnitudes, and coefficient heterogeneity | `Case study/Plot_case_study_1.R` |
+| **Table 1** | Sign comparison across univariate QR, Lasso-QR, NC-QR, and UNIQUE | `Motivating study/Intro_table_uniQR_vs_lassoQR.R` and `Motivating study/Intro_table_NCQR_UNIQUE.m` |
+| **Table 2** | Simulation study performance summary | `Simulation study/SUMMARY_all_reps.m` |
+| **Table 3** | Sign-constraint specification | Descriptive table |
+| **Table 4** | Out-of-sample performance comparison | `Case study/Case_study_OOS_performance.m` |
+| **Table S1** | Variable definitions for PPMI case study | Descriptive table |
+
+---
+
+## 🔁 Reproducibility Instructions
+
+Detailed reproduction steps are provided in:
+
+```text
+UNIQUE_Reproducibility_Instructions.pdf
+
+---
 
 ## 🧠 Core Idea
 
@@ -446,43 +486,3 @@ Predictor domains include:
 
 The final analysis identifies interpretable neurocognitive drivers of lower-tail vulnerability while preserving global noncrossing and stable sign behavior.
 
----
-
-## 📁 Repository Structure
-
-| Folder | Description |
-|--------|-------------|
-| `Motivating study/` | Scripts for introductory sign-comparison table |
-| `Simulation study/` | Scripts for simulation data generation, fitting, and summaries |
-| `Case study/` | PPMI case study analysis, bootstrap, out-of-sample comparison, and plots |
-| `DEMO/` | Minimal demonstration of UNIQUE on an example dataset |
-| `images/` | Figures displayed in this README and manuscript |
-| `UNIQUE_Reproducibility_Instructions.pdf` | Full reproducibility instructions |
-
----
-
-## 🧮 Figures and Tables in the Paper
-
-The table below maps manuscript outputs to scripts used to generate them.
-
-| Output | Description | Script Path |
-|--------|-------------|-------------|
-| **Figure 1** | MoCA distribution, PD stage, and symptom-domain prevalence across MoCA deciles | `Case study/Plot_UNIQUE_motivation.R` |
-| **Figure 2** | Ordinal non-motor symptom severity profiles across MoCA deciles | `Case study/Plot_UNIQUE_motivation.R` |
-| **Figure 3** | Quantile-specific coefficient profiles for selected neurocognitive predictors | `Case study/Plot_case_study_1.R` |
-| **Figure 4** | Estimated conditional quantile curves on original predictor scales | `Case study/Plot_case_study_2.R` |
-| **Figure 5** | Original-scale effects, standardized effect magnitudes, and coefficient heterogeneity | `Case study/Plot_case_study_1.R` |
-| **Table 1** | Sign comparison across univariate QR, Lasso-QR, NC-QR, and UNIQUE | `Motivating study/Intro_table_uniQR_vs_lassoQR.R` and `Motivating study/Intro_table_NCQR_UNIQUE.m` |
-| **Table 2** | Simulation study performance summary | `Simulation study/SUMMARY_all_reps.m` |
-| **Table 3** | Sign-constraint specification | Descriptive table |
-| **Table 4** | Out-of-sample performance comparison | `Case study/Case_study_OOS_performance.m` |
-| **Table S1** | Variable definitions for PPMI case study | Descriptive table |
-
----
-
-## 🔁 Reproducibility Instructions
-
-Detailed reproduction steps are provided in:
-
-```text
-UNIQUE_Reproducibility_Instructions.pdf
