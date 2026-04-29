@@ -2,10 +2,12 @@
 
 A sparse simultaneous quantile regression framework for studying **distributional heterogeneity**, **lower-tail vulnerability**, and **clinically interpretable predictor effects** in Parkinson’s disease cognition.
 
-**Paper:**  
-Das et al. (2026).  
-*UNIQUE: Univariate-Guided Sparse Noncrossing Quantile Regression for Cognitive Heterogeneity in Parkinson’s Disease*.  
-ArXiv: coming soon.
+
+## 📚 Citation
+ 
+> XXX et al. (2026).  
+> *UNIQUE: Univariate-Guided Sparse Noncrossing Quantile Regression for Cognitive Heterogeneity in Parkinson’s Disease*.  
+> ArXiv: coming soon.
 
 ---
 
