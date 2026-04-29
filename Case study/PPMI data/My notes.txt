@@ -1,0 +1,2 @@
+1. race 1 = white, rest should be put 0, means non-white
+2. handed: 1= right, 2 = left, 3 = mixed; need to divide into two binary (right or not, left or not)
