@@ -85,11 +85,7 @@ $$
 
 where
 
-$$
-\rho_{\tau}(u)
-=
-u(\tau - \mathbf{1}(u < 0))
-$$
+$$\rho_{\tau}(u)=u(\tau - \mathbf{1}(u < 0))$$
 
 The marginal fitted learner is
 
