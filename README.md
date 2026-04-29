@@ -77,39 +77,45 @@ UNIQUE uses univariate quantile regressions as interpretable building blocks and
 For each predictor $j$ and quantile level $\tau_k$, we first fit a marginal quantile regression:
 
 $$
-(\hat{\beta}_{0j,k},\hat{\beta}_{j,k})
+(\hat{\beta}_{0j,k}, \hat{\beta}_{j,k})
 =
 \arg\min_{b_0,b}
-\sum_{i=1}^n
-\rho_{\tau_k}(y_i-b_0-bx_{ij}),
+\sum_{i=1}^{n}
+\rho_{\tau_k}\left(y_i - b_0 - b x_{ij}\right)
 $$
 
 where
 
 $$
-\rho_\tau(u)=u\{\tau-\mathbf{1}(u<0)\}.
+\rho_{\tau}(u)
+=
+u\left(\tau - \mathbf{1}(u < 0)\right)
 $$
 
 The marginal fitted learner is
 
 $$
-\hat\eta_{ij,k}
+\hat{\eta}_{ij,k}
 =
-\hat\beta_{0j,k}
+\hat{\beta}_{0j,k}
 +
-\hat\beta_{j,k}x_{ij}.
+\hat{\beta}_{j,k} x_{ij}
 $$
 
 UNIQUE then learns sparse nonnegative aggregation weights $\theta_{jk}$ so that the final quantile estimator is
 
 $$
-\widehat Q(\tau_k\mid x)
+\widehat{Q}(\tau_k \mid x)
 =
-\hat\theta_{0k}
+\hat{\theta}_{0k}
 +
-\sum_{j=1}^p
-\hat\theta_{jk}
-\left(\hat\beta_{0j,k}+\hat\beta_{j,k}x_j\right).
+\sum_{j=1}^{p}
+\hat{\theta}_{jk}
+\left(
+\hat{\beta}_{0j,k}
++
+\hat{\beta}_{j,k} x_j
+\right)
 $$
 
 The nonnegative aggregation weights preserve the sign of marginal quantile effects for selected predictors, while the model can shrink weak predictors exactly to zero.
@@ -122,39 +128,45 @@ UNIQUE estimates stacking weights by minimizing the quantile loss plus a structu
 
 $$
 \min_{\boldsymbol{\theta}_0,\boldsymbol{\theta}}
+\;
 \frac{1}{n}
-\sum_{k=1}^K
-\sum_{i=1}^n
+\sum_{k=1}^{K}
+\sum_{i=1}^{n}
 \rho_{\tau_k}
 \left(
-y_i-\tilde q_{ik}(\boldsymbol{\theta}_0,\boldsymbol{\theta})
+y_i
+-
+\tilde{q}_{ik}
+(\boldsymbol{\theta}_0,\boldsymbol{\theta})
 \right)
 +
 \lambda_n
-\sum_{j=1}^p
+\sum_{j=1}^{p}
 \left(
-\sum_{k=1}^K
+\sum_{k=1}^{K}
 \omega_{jk}\theta_{jk}
-\right)^{1/2},
+\right)^{1/2}
 $$
 
 where
 
 $$
-\tilde q_{ik}(\boldsymbol{\theta}_0,\boldsymbol{\theta})
+\tilde{q}_{ik}
+(\boldsymbol{\theta}_0,\boldsymbol{\theta})
 =
 \theta_{0k}
 +
-\sum_{j=1}^p
-\hat\eta_{ij,k}^{\mathrm{CF}}\theta_{jk}.
+\sum_{j=1}^{p}
+\hat{\eta}_{ij,k}^{\mathrm{CF}}
+\theta_{jk}
 $$
 
 The penalty
 
 $$
-\sum_{j=1}^p
+\sum_{j=1}^{p}
 \left(
-\sum_{k=1}^K
+\sum_{k=1}^{K}
 \omega_{jk}\theta_{jk}
 \right)^{1/2}
 $$
@@ -168,13 +180,13 @@ encourages predictor-level sparsity while allowing quantile-specific heterogenei
 The estimated quantile functions are required to satisfy
 
 $$
-\widehat Q(\tau_1\mid x)
+\widehat{Q}(\tau_1 \mid x)
 \le
-\widehat Q(\tau_2\mid x)
+\widehat{Q}(\tau_2 \mid x)
 \le
 \cdots
 \le
-\widehat Q(\tau_K\mid x)
+\widehat{Q}(\tau_K \mid x)
 $$
 
 for all covariate values $x$.
@@ -182,7 +194,9 @@ for all covariate values $x$.
 Because the fitted quantile functions are affine in $x$, global noncrossing over the scaled predictor domain can be written as a finite system of linear inequalities:
 
 $$
-A\boldsymbol{\Gamma} \ge 0,
+A \boldsymbol{\Gamma}
+\ge
+0
 $$
 
 where
@@ -190,7 +204,11 @@ where
 $$
 \boldsymbol{\Gamma}
 =
-(\boldsymbol{\theta}_0^\top,\boldsymbol{\theta}^\top,\boldsymbol{s}^\top)^\top
+\left(
+\boldsymbol{\theta}_0^{\top},
+\boldsymbol{\theta}^{\top},
+\boldsymbol{s}^{\top}
+\right)^{\top}
 $$
 
 contains intercept weights, aggregation weights, and slack variables.
@@ -217,11 +235,15 @@ $$
 q_j
 \cdot
 \frac{
-|\hat\beta_{j,k}^{\mathrm{mult}}|
+\left|
+\hat{\beta}_{j,k}^{\mathrm{mult}}
+\right|
 }{
 \mathrm{median}_{j,k}
-|\hat\beta_{j,k}^{\mathrm{mult}}|
-},
+\left|
+\hat{\beta}_{j,k}^{\mathrm{mult}}
+\right|
+}
 $$
 
 and
@@ -229,19 +251,24 @@ and
 $$
 \omega_{jk}
 =
-\frac{1}{\mathrm{signal}_{jk}+\varepsilon_w}.
+\frac{
+1
+}{
+\mathrm{signal}_{jk}
++
+\varepsilon_w
+}
 $$
 
 Here:
 
 - $q_j$ measures the univariate quantile fit quality of predictor $j$  
-- $\hat\beta_{j,k}^{\mathrm{mult}}$ is a multivariable quantile regression estimate  
+- $\hat{\beta}_{j,k}^{\mathrm{mult}}$ is a multivariable quantile regression estimate  
 - $\varepsilon_w$ is a small stabilization constant  
 
 Large weights induce stronger shrinkage; small weights protect stronger signals.
 
 ---
-
 ## 🔍 Scientific Motivation: Cognitive Heterogeneity in Parkinson’s Disease
 
 The case study focuses on MoCA cognitive score heterogeneity in Parkinson’s disease using the Parkinson’s Progression Markers Initiative (PPMI).
