@@ -104,7 +104,7 @@ A key feature of UNIQUE is that sign constraints are imposed **selectively**, no
 
 For predictors with strong prior clinical evidence, UNIQUE restricts coefficient directions to agree with the corresponding marginal quantile relationships. For weaker or context-dependent predictors, the conditional effects are left unconstrained.
 
-This differs from broad univariate-guided sign alignment, where all conditional signs are forced to agree with marginal signs. UNIQUE uses marginal quantile effects as interpretable anchors only when the scientific direction is well established.
+This differs from broad univariate-guided sign alignment (e.g., UniLasso), where all conditional signs are forced to agree with marginal signs. UNIQUE uses marginal quantile effects as interpretable anchors only when the scientific direction is well established.
 
 ---
 
