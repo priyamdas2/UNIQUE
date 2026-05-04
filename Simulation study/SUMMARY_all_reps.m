@@ -3,10 +3,10 @@ clear; clc;
 %% =========================
 % USER INPUT
 %% =========================
-n = 500;
-p = 20;
+n = 200;
+p = 50;
 
-design_type = 'indep';
+design_type = 'corr';
 rep_range = 1:20;
 outdir = 'Output';
 
@@ -21,8 +21,7 @@ method_used = 'ALL';
 %% =========================
 metric_cols = { ...
     'TPR','FPR','MCC','FDR','beta_RMSE','Q_RMSE', ...
-    'ratio_same','ratio_opposite','n_true','comp_time', ...
-    'n_same','n_opposite','n_zero'};
+    'n_true','comp_time','n_same','n_opposite','n_zero'};
 
 all_tables = {};
 used_reps = [];
@@ -241,6 +240,22 @@ for r = 1:R
 end
 
 %% =========================
+% RECALCULATE SIGN RATIOS AMONG SELECTED NONZERO SIGN-CHECKED ENTRIES
+%% =========================
+denom_selected = data.n_same + data.n_opposite;
+
+data.ratio_same_in_selected = data.n_same ./ denom_selected;
+data.ratio_opposite_in_selected = data.n_opposite ./ denom_selected;
+
+data.ratio_same_in_selected(denom_selected == 0) = NaN;
+data.ratio_opposite_in_selected(denom_selected == 0) = NaN;
+
+metric_cols = { ...
+    'TPR','FPR','MCC','FDR','beta_RMSE','Q_RMSE', ...
+    'ratio_same_in_selected','ratio_opposite_in_selected', ...
+    'n_true','comp_time','n_same','n_opposite','n_zero'};
+
+%% =========================
 % BUILD FINAL TABLE
 % rows = methods
 % cols = metrics
@@ -259,7 +274,8 @@ for j = 1:numel(metric_cols)
 
     for i = 1:n_methods
 
-        if ismember(col, {'TPR','FPR','MCC','FDR','beta_RMSE','Q_RMSE','ratio_same','ratio_opposite'})
+        if ismember(col, {'TPR','FPR','MCC','FDR','beta_RMSE','Q_RMSE', ...
+        'ratio_same_in_selected','ratio_opposite_in_selected'})
             out_str(i) = sprintf('%.2f(%.3f)', mu(i), se(i));
 
         elseif ismember(col, {'comp_time','n_true','n_same','n_opposite','n_zero'})
