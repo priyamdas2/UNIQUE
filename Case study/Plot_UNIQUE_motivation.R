@@ -66,7 +66,8 @@ hy_df <- dat %>%
   mutate(
     hy_stage = factor(
       hy,
-      levels = rev(hy_levels)   # keeps stack order same as original
+      levels = rev(hy_levels),
+      labels = c("Advanced\n(HY \u22653)", "Bilateral\n(HY 2)", "Unilateral\n(HY 1)")
     )
   ) %>%
   count(moca_decile_lab, hy_stage) %>%
@@ -88,8 +89,12 @@ fig_hy_stack <- ggplot(
     expand = expansion(mult = c(0, 0.01))
   ) +
   scale_fill_manual(
-    values = hy_cols,
-    breaks = c("1", "2", "3"),
+    values = c(
+      "Unilateral\n(HY 1)" = "#FEE08B",
+      "Bilateral\n(HY 2)" = "#F46D43",
+      "Advanced\n(HY \u22653)" = "#A50026"
+    ),
+    breaks = c("Unilateral\n(HY 1)", "Bilateral\n(HY 2)", "Advanced\n(HY \u22653)"),
     drop = FALSE
   ) +
   guides(
@@ -102,7 +107,7 @@ fig_hy_stack <- ggplot(
   labs(
     x = "Cognitive score decile",
     y = NULL,
-    fill = "PD stage"
+    fill = "HY motor stage"
   ) +
   theme_pub +
   theme(
