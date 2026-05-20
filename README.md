@@ -5,7 +5,7 @@ A sparse simultaneous quantile regression framework for studying **distributiona
 
 ## 📚 Citation
  
-> XXX et al. (2026).  
+> Das P, Banerjee T, Ahsan M, Le Q, Barrett M, Mukhopadhyay N (2026).  
 > *UNIQUE: Univariate-Guided Sparse Noncrossing Quantile Regression for Cognitive Heterogeneity in Parkinson’s Disease*.  
 > ArXiv: coming soon.
 
