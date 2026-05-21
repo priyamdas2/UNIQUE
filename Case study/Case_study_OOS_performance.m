@@ -408,7 +408,9 @@ function [prop_match, prop_reversed] = sign_metrics_from_matrix(beta_hat_raw, ma
     constrained_mask_full = repmat(constrained_row_mask(:), 1, size(beta_hat_raw,2));
 
     % Method-specific selected set among constrained entries only
-    selected_mask = constrained_mask_full & (abs(beta_hat_raw) > sel_thr);
+    selected_mask = constrained_mask_full & ...
+                (abs(beta_hat_raw) > sel_thr) & ...
+                (marg_sign_mat ~= 0);
 
     denom = sum(selected_mask(:));
 
