@@ -13,7 +13,7 @@ end
 %% =======================
 use_dataset = 2;         % must be 1 / 2 / 3, 2 = main analysis data
 Num_bootstrap = 1000;
-strat_from = 501;
+strat_from = 1;
 if ~ismember(use_dataset, [1, 2, 3])
     error('use_dataset must be either 1, 2 or 3.');
 end
@@ -137,8 +137,8 @@ end
 %% =======================
 
 % UNIQUE tuning
-t_row = 0.01;     % more relaxed for Bootstrap
-gate_thr = 0.01;  % more relaxed for Bootstrap
+t_row = 0.05;     % more relaxed for Bootstrap
+gate_thr = 0.05;  % more relaxed for Bootstrap
 num_folds_for_crossfit = 10;
 num_folds_for_final_lambda = 5;
 lambda_grid_UNIQUE = sort(logspace(-5, 5, 20));

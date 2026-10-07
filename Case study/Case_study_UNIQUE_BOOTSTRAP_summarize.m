@@ -5,7 +5,7 @@ clear; clc;
 %% =======================
 bootdir = 'Bootstrap for CI';
 use_dataset = 2; % must be 1 / 2 / 3; 2 = main analysis data
-Num_bootstrap = 500;
+Num_bootstrap = 1000;
 CI_level = 0.95;
 
 % Quantile grid (must match bootstrap run)
