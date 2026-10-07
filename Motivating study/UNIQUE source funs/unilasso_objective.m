@@ -23,11 +23,11 @@ function f = unilasso_objective(theta_vec, Y, eta_CF, tau_grid, omega, lambda)
 
     loss = loss / n;
 
-    % ---- UniLasso penalty" sum_j (sum_k omega_jk * theta_jk)^(1/2)  ----
+    % ---- UniLasso penalty" sum_j (sum_k omega_jk * |theta_jk|)^(1/2)  ----
     pen = 0;
 
     for j = 1:p
-        pen = pen + sqrt( sum( omega(j,:) .* theta(j,:) ) );
+        pen = pen + sqrt( sum( omega(j,:) .* abs(theta(j,:)) ) );
     end
 
     f = loss + lambda * pen;
