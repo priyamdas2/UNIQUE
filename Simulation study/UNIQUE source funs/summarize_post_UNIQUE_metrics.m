@@ -117,6 +117,7 @@ function summary = summarize_post_UNIQUE_metrics(results, opts)
     summary.UNIQUE.n_same         = sign_stats_unilasso.n_same;
     summary.UNIQUE.n_opposite     = sign_stats_unilasso.n_opposite;
     summary.UNIQUE.n_zero         = sign_stats_unilasso.n_zero;
+    summary.UNIQUE.n_ref_zero = sign_stats_unilasso.n_ref_zero;
 
     % ---------------------------------------------------------
     % QR-LASSO metrics (only if requested and available)
@@ -164,5 +165,6 @@ function summary = summarize_post_UNIQUE_metrics(results, opts)
         summary.QRLASSO.n_same         = sign_stats_qrlasso.n_same;
         summary.QRLASSO.n_opposite     = sign_stats_qrlasso.n_opposite;
         summary.QRLASSO.n_zero         = sign_stats_qrlasso.n_zero;
+        summary.QRLASSO.n_ref_zero = sign_stats_qrlasso.n_ref_zero;
     end
 end
