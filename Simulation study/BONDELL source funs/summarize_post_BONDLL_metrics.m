@@ -95,12 +95,22 @@ function summary = summarize_post_BONDLL_metrics(results, opts)
     Q_bondell_all = ones(n,1) * beta0_hat_bondell'   + X * beta_hat_bondell;
 
     Q_RMSE_bondell = sqrt(mean((Q_bondell_all(:) - Q_true_all(:)).^2));
-
+    
     % ---------------------------------------------------------
-    % Sign agreement relative to truth, restricted to true active coords
+    % Marginal univariate reference slopes for this replicate
+    % Use the same univariate fitting function as UNIQUE.
     % ---------------------------------------------------------
-    sign_stats_bondell = sign_agreement_coord_truth( ...
-        beta_hat_bondell, beta_true_grid, true_mask, sel_thr);
+    X_ref = results.X_used_for_fitting;
+    Y_ref = results.Y;
+    
+    [~, beta_marginal_grid] = compute_UNIQUE_univariate_basis( ...
+        X_ref, Y_ref, tau_grid);
+    
+    % ---------------------------------------------------------
+% Agreement with marginal signs, among selected true signals
+% ---------------------------------------------------------
+sign_stats_bondell = sign_agreement_coord( ...
+    beta_hat_bondell, beta_marginal_grid, true_mask, sel_thr);
 
     time_bondell = results.time_bondell;
 
@@ -125,4 +135,5 @@ function summary = summarize_post_BONDLL_metrics(results, opts)
     summary.BONDELL.n_same         = sign_stats_bondell.n_same;
     summary.BONDELL.n_opposite     = sign_stats_bondell.n_opposite;
     summary.BONDELL.n_zero         = sign_stats_bondell.n_zero;
+    summary.BONDELL.n_ref_zero     = sign_stats_bondell.n_ref_zero;
 end
