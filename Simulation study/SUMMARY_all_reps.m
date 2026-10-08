@@ -3,10 +3,10 @@ clear; clc;
 %% =========================
 % USER INPUT
 %% =========================
-n = 200;
-p = 50;
+n = 500;
+p = 20;
 
-design_type = 'corr';
+design_type = 'indep';
 rep_range = 1:20;
 outdir = 'Output';
 

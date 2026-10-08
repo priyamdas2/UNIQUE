@@ -14,9 +14,9 @@ datadir = 'Data';
 %% =======================
 Num_exps = 20;
 n = 500;
-p = 100;
+p = 20;
 p_true = 4;
-design_type = 'corr'; % 'corr'/ 'indep'
+design_type = 'indep'; % 'corr'/ 'indep'
 
 % Load tau grid
 fname_tau = fullfile(datadir, ...
